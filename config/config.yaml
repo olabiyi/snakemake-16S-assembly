@@ -1,7 +1,6 @@
-samples:  ["5CRep1", "5CRep2", "6BRep1", "6BRep2", "11BRep1", "11BRep2", "16CRep1", "16CRep2", "59BRep1", "59BRep2", "61ARep1", 
-          "61ARep2", "64ARep1", "64ARep2", "71BRep1", "71BRep2", "71DRep1", "71DRep2", "83BRep1", "83BRep2", "84ARep1", "84ARep2"]
+samples:  ["5CRep1", "5CRep2", "6BRep1", "6BRep2"]
         
-FASTA: "database/ref.fasta"
+FASTA: "database/ref.fasta" # Reference 16S sequences e.g silva databse sequences
 ASSEMBLER: 'megahit' # "spades" or "megahit" 
 
 # Full paths to the specified programs

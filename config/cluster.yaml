@@ -5,26 +5,17 @@ __default__:
     mem: "10g" # in GB
     threads: "10"
     queue: "xlong" # gpu
-    nodes: "1"
-    
+    nodes: "1" 
 
-Trim_primers:
-    mem: "60g" # in GB
-    threads: "28"
- 
-Denoise_reads:
-    mem: "60g" # in GB
-    threads: "28" 
-
-Build_phylogenetic_tree:
+Assemble_rRNA:
     mem: "60g" # in GB
     threads: "28"   
  
-Assign_taxonomy:
+Detect_chimeras:
     mem: "210g" # in GB
     threads: "28"    
     
-Function_annotation:
+BlastSeqs:
     mem: "60g" # in GB
     threads: "28"
     time: "17:00:00" 
