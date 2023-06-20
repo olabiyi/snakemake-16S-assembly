@@ -1,0 +1,45 @@
+samples:  ["5CRep1", "5CRep2", "6BRep1", "6BRep2", "11BRep1", "11BRep2", "16CRep1", "16CRep2", "59BRep1", "59BRep2", "61ARep1", 
+          "61ARep2", "64ARep1", "64ARep2", "71BRep1", "71BRep2", "71DRep1", "71DRep2", "83BRep1", "83BRep2", "84ARep1", "84ARep2"]
+        
+FASTA: "database/ref.fasta"
+ASSEMBLER: 'megahit' # "spades" or "megahit" 
+
+# Full paths to the specified programs
+programs_path:
+    multiqc: "/home/jeffbrady/anaconda3/envs/bioinfo/bin/multiqc"
+    fastqc: "/home/jeffbrady/anaconda3/envs/bioinfo/bin/fastqc"
+    parallel: "/home/jeffbrady/anaconda3/envs/bioinfo/bin/parallel"
+    trim_galore: "/home/jeffbrady/anaconda3/envs/bioinfo/bin/trim_galore"
+    cutadapt: "/home/jeffbrady/anaconda3/envs/bioinfo/bin/cutadapt"
+    trimmomatic: "/home/jeffbrady/anaconda3/envs/bioinfo/bin/trimmomatic"
+    seqkit: "/home/jeffbrady/anaconda3/envs/bioinfo/bin/seqkit"
+    makeblastdb: "/home/jeffbrady/anaconda3/envs/bioinfo/bin/makeblastdb"
+    blastn: "/home/jeffbrady/anaconda3/envs/bioinfo/bin/blastn"
+    blastp: "/home/jeffbrady/anaconda3/envs/bioinfo/bin/blastp"
+    spades: "/home/jeffbrady/anaconda3/envs/bioinfo/bin/spades.py"
+    usearch: "/usr/local/bin/usearch11"
+
+# Set tool specific parameters
+parameters:
+   # Adators and primer trimming using cutadapt
+    cutadapt:
+        forward_primer: "AGRGTTYGATYMTGGCTCAG"
+        reverse_primer: "RGYTACCTTGTTACGACTT"  
+        minimum_length: 20 # retain only reads with length greater than this after quality filtering
+        quality_cutoff: 20,20 # trim base with bases with quailty less than 20 from the 5', and 3' regions
+    trimmomatic: 
+        adaptors: "/home/jeffbrady/anaconda3/envs/bioinfo/share/trimmomatic-0.39-1/adapters/Nextera_andTruseqPE-PE.fa" #"NexteraPE-PE.fa"
+        min_len: 20
+    blast:
+        dbname: "silva" # card_args  or args
+        dbtype: "nucl"
+        evalue: "1e-5"
+        coverage: "80"
+        identity: "95"
+        outformat: "\"6 qseqid sseqid stitle pident qlen length mismatch gapopen qstart qend sstart send evalue bitscore qcovs\""
+
+conda:
+    bioinfo:
+        env: "source activate /home/jeffbrady/anaconda3/envs/bioinfo/"
+        perl5lib: "export PERL5LIB=/home/jeffbrady/anaconda3/envs/bioinfo/lib/5.26.2"
+
